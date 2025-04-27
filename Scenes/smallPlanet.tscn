@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbdbjp3is68ks"]
+
+[ext_resource type="Texture2D" uid="uid://eorn2bwasuyr" path="res://art/smallPlanet.png" id="2_8g7i6"]
+[ext_resource type="Script" uid="uid://sf4aia4nq5ok" path="res://Scripts/planet_body.gd" id="2_71tfn"]
+[ext_resource type="Script" uid="uid://cnqy5i3x1qkmr" path="res://Scripts/gravity_field.gd" id="3_uj3hf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hiue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8g7i6"]
+
+[node name="Planet" type="Node2D"]
+
+[node name="planetBody" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("2_71tfn")
+
+[node name="planetCollision" type="CollisionShape2D" parent="planetBody"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_2hiue")
+
+[node name="planetGraphic" type="Sprite2D" parent="planetBody"]
+scale = Vector2(0.097, 0.097)
+texture = ExtResource("2_8g7i6")
+
+[node name="gravityField" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("3_uj3hf")
+
+[node name="gravityField" type="Sprite2D" parent="gravityField"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="gravityField"]
+scale = Vector2(21, 21)
+shape = SubResource("CircleShape2D_8g7i6")
+debug_color = Color(0.755778, 0.429221, 0.41801, 0.42)
+
+[connection signal="body_entered" from="planetBody" to="planetBody" method="_on_body_entered"]
