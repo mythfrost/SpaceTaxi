@@ -6,6 +6,10 @@ var is_launched = false
 var current_fuel := max_fuel
 @export var thrust_power := 400.0
 @export var fuel_burn_rate := 40.0
+@onready var cam: Camera2D = $Camera2D
+
+func _ready() -> void:
+	cam.make_current()
 
 func launch(degrees):
 	var ang = deg_to_rad(degrees)
