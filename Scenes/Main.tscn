@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cicfx016cgi4k"]
+[gd_scene load_steps=8 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bghnl4p5lfhl" path="res://Scenes/Spaceship.tscn" id="2_rgh2o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bbu5nl8nxfng0" path="res://Scripts/spaceship.gd" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://baubbr1tgv60k" path="res://Scenes/mediumPlanet.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b1ab33pf64o5a" path="res://Scenes/largePlanet.tscn" id="6_v1gob"]
+[ext_resource type="PackedScene" uid="uid://cevdqifu1aoer" path="res://Scenes/sun.tscn" id="7_jw32o"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kln2b")
@@ -14,14 +15,16 @@ script = ExtResource("1_kln2b")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 10000.0
-offset_bottom = 10000.0
+offset_left = -3965.0
+offset_top = -5334.0
+offset_right = 6035.0
+offset_bottom = 4666.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Spaceship" parent="." instance=ExtResource("2_rgh2o")]
-position = Vector2(962, 911)
+position = Vector2(967, 965)
 script = ExtResource("3_rgh2o")
 max_fuel = 100.0
 thrust_power = 400.0
@@ -65,13 +68,18 @@ value = 100.0
 fill_mode = 3
 
 [node name="smallPlanet" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(552, 778)
+position = Vector2(-1832, -1221)
 
 [node name="mediumPlanet" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(1321, 449)
+position = Vector2(578, -1906)
+
+[node name="mediumPlanet2" parent="." instance=ExtResource("5_pbw6q")]
+position = Vector2(-841, -2089)
 
 [node name="largePlanet" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(471, 46)
+position = Vector2(953, 246)
+
+[node name="Sun" parent="." instance=ExtResource("7_jw32o")]
 
 [connection signal="value_changed" from="CanvasLayer/AngleSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
