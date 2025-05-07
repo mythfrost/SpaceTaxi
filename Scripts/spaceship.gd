@@ -10,16 +10,16 @@ var _orbit_angle: float   = 0.0
 
 @export var max_fuel := 100.0
 var current_fuel := max_fuel
-@export var thrust_power := 400.0
-@export var fuel_burn_rate := 20.0
+@export var thrust_power := 1500.0
+@export var fuel_burn_rate := 6.0
 
 @export var max_turn_fuel       := 100.0
-@export var turn_fuel_burn_rate := 20.0
-@export var turn_speed          := 3.0
+@export var turn_fuel_burn_rate := 8.0
+@export var turn_speed          := 4.5
 var turn_fuel := max_turn_fuel
 
-@export var zoom_normal := Vector2(1, 1)
-@export var zoomed_in   := Vector2(0.5, 0.5)
+@export var zoom_normal := Vector2(.8, .8)
+@export var zoomed_in   := Vector2(0.35, 0.35)
 var is_zoomed := false
 
 @onready var cam: Camera2D = $Camera2D
@@ -34,14 +34,11 @@ func launch() -> void:
 func _physics_process(delta: float) -> void:
 	if is_launched:
 		if turn_fuel > 0:
-			var did_turn := false
 			if Input.is_action_pressed("turn_left"):
 				rotation -= turn_speed * delta
-				did_turn = true
+				turn_fuel = max(turn_fuel - turn_fuel_burn_rate * delta, 0)
 			elif Input.is_action_pressed("turn_right"):
 				rotation += turn_speed * delta
-				did_turn = true
-			if did_turn:
 				turn_fuel = max(turn_fuel - turn_fuel_burn_rate * delta, 0)
 		if Input.is_action_pressed("ui_accept") and current_fuel > 0:
 			current_fuel = max(current_fuel - fuel_burn_rate * delta, 0)
@@ -49,10 +46,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if is_orbiting:
 			if Input.is_action_just_pressed("ui_accept"):
-				var tangent = Vector2(
-					-sin(_orbit_angle),
-				 	cos(_orbit_angle)
-				) * _orbit_speed * _orbit_radius
+				var tangent = Vector2(-sin(_orbit_angle), cos(_orbit_angle)) * _orbit_speed * _orbit_radius
 				velocity = tangent
 				is_orbiting = false
 				return
@@ -61,12 +55,16 @@ func _physics_process(delta: float) -> void:
 			return
 		
 func start_orbit(center: Vector2, radius: float, speed: float) -> void:
-	print("   [ship] start_orbit: radius=", radius, " speed=", speed)
-	is_orbiting  = true
-	orbit_center = center
+	is_orbiting   = true
+	orbit_center  = center
 	_orbit_radius = radius
-	_orbit_speed  = speed
-	_orbit_angle = (global_position - center).angle()
+
+	var radial = global_position - center
+	var cross_z = radial.x * velocity.y - radial.y * velocity.x
+	var dir_sign = 1 if cross_z >= 0 else -1
+	_orbit_speed = speed * dir_sign
+	_orbit_angle = radial.angle()
+
 
 func stop_orbit() -> void:
 	is_orbiting = false
