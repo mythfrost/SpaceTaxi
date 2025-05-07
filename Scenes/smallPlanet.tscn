@@ -29,7 +29,7 @@ script = ExtResource("3_uj3hf")
 [node name="gravityField" type="Sprite2D" parent="gravityField"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="gravityField"]
-scale = Vector2(21, 21)
+scale = Vector2(63, 63)
 shape = SubResource("CircleShape2D_8g7i6")
 debug_color = Color(0.755778, 0.429221, 0.41801, 0.42)
 

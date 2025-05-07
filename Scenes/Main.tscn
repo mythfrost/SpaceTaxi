@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cicfx016cgi4k"]
+[gd_scene load_steps=7 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://bghnl4p5lfhl" path="res://Scenes/Spaceship.tscn" id="2_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://cbdbjp3is68ks" path="res://Scenes/smallPlanet.tscn" id="3_pbw6q"]
-[ext_resource type="Script" uid="uid://bbu5nl8nxfng0" path="res://Scripts/spaceship.gd" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://baubbr1tgv60k" path="res://Scenes/mediumPlanet.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b1ab33pf64o5a" path="res://Scenes/largePlanet.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://cevdqifu1aoer" path="res://Scenes/sun.tscn" id="7_jw32o"]
@@ -24,24 +23,9 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Spaceship" parent="." instance=ExtResource("2_rgh2o")]
-position = Vector2(967, 965)
-script = ExtResource("3_rgh2o")
-max_fuel = 100.0
-thrust_power = 400.0
-fuel_burn_rate = 40.0
+position = Vector2(-1050, 774)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AngleSlider" type="HSlider" parent="CanvasLayer"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -16.0
-grow_horizontal = 2
-grow_vertical = 0
-max_value = 180.0
-value = 90.0
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 927.0
@@ -57,9 +41,26 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -35.0
+offset_left = -39.0
+offset_top = -197.0
+offset_right = -19.0
+offset_bottom = 198.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 100.0
+fill_mode = 3
+
+[node name="SecondaryFuelBar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(20, 270)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.0
 offset_top = -135.0
-offset_right = -15.0
+offset_right = -67.0
 offset_bottom = 135.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -68,18 +69,39 @@ value = 100.0
 fill_mode = 3
 
 [node name="smallPlanet" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(-1832, -1221)
+position = Vector2(-12, 1673)
+
+[node name="smallPlanet2" parent="." instance=ExtResource("3_pbw6q")]
+position = Vector2(-2336, 2138)
+
+[node name="smallPlanet3" parent="." instance=ExtResource("3_pbw6q")]
+position = Vector2(4159, 2305)
 
 [node name="mediumPlanet" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(578, -1906)
+position = Vector2(-44, -1520)
 
 [node name="mediumPlanet2" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-841, -2089)
+position = Vector2(-872, -76)
+
+[node name="mediumPlanet3" parent="." instance=ExtResource("5_pbw6q")]
+position = Vector2(832, -2972)
+
+[node name="mediumPlanet4" parent="." instance=ExtResource("5_pbw6q")]
+position = Vector2(3847, -1864)
 
 [node name="largePlanet" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(953, 246)
+position = Vector2(2069, -1855)
+
+[node name="largePlanet2" parent="." instance=ExtResource("6_v1gob")]
+position = Vector2(1843, 1589)
+
+[node name="largePlanet3" parent="." instance=ExtResource("6_v1gob")]
+position = Vector2(3214, 28)
+
+[node name="largePlanet4" parent="." instance=ExtResource("6_v1gob")]
+position = Vector2(-1887, -1986)
 
 [node name="Sun" parent="." instance=ExtResource("7_jw32o")]
+position = Vector2(1000, 83)
 
-[connection signal="value_changed" from="CanvasLayer/AngleSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
