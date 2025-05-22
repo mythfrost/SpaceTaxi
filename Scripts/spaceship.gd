@@ -18,15 +18,15 @@ var current_fuel := max_fuel
 @export var turn_speed          := 3.0
 var turn_fuel := max_turn_fuel
 
-@export var zoom_normal := Vector2(.8, .8)
-@export var zoomed_in   := Vector2(0.35, .35)
+@export var zoom_normal := Vector2(.65, .65)
+@export var zoomed_in   := Vector2(0.2, .2)
 var is_zoomed := false
 
 @onready var cam: Camera2D = $Camera2D
 
 func _ready() -> void:
 	cam.make_current()
-	
+
 func launch() -> void:
 	velocity = Vector2.UP.rotated(rotation) * thrust_power
 	is_launched = true
@@ -56,20 +56,23 @@ func _physics_process(delta: float) -> void:
 			_orbit_angle += _orbit_speed * delta
 			global_position = orbit_center + Vector2(cos(_orbit_angle), sin(_orbit_angle)) * _orbit_radius
 			return
-		
+
 func start_orbit(center: Vector2, radius: float, speed: float) -> void:
-	is_orbiting    = true
-	orbit_center   = center
-	_orbit_radius  = radius
-	var radial     = global_position - center
+	var radial = global_position - center
+	var inward = -radial.normalized()
+	if velocity.normalized().dot(inward) > 0.7:
+		return
+	is_orbiting = true
+	orbit_center = center
+	_orbit_radius = radius
 	var tangent_dir = Vector2(-radial.y, radial.x).normalized()
 	var tang_speed = velocity.dot(tangent_dir)
-	_orbit_speed   = 1.2 * tang_speed / radius
-	_orbit_angle   = radial.angle()
+	_orbit_speed = 1.2 * tang_speed / radius
+	_orbit_angle = radial.angle()
 
 func stop_orbit() -> void:
 	is_orbiting = false
-	
+
 func _input(event):
 	if event.is_action_pressed("toggle_zoom"):
 		is_zoomed = not is_zoomed
