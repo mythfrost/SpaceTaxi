@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ab33pf64o5a"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ab33pf64o5a"]
 
 [ext_resource type="Script" uid="uid://sf4aia4nq5ok" path="res://Scripts/planet_body.gd" id="1_qtuyl"]
+[ext_resource type="Script" uid="uid://dq7wa00hnlnkm" path="res://planet_orbit.gd" id="1_yrmca"]
 [ext_resource type="Texture2D" uid="uid://b0hunvlanjoya" path="res://art/largePlanet.png" id="2_mufvp"]
 [ext_resource type="Script" uid="uid://cnqy5i3x1qkmr" path="res://Scripts/gravity_field.gd" id="3_61351"]
 
@@ -9,6 +10,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8g7i6"]
 
 [node name="Planet" type="Node2D"]
+script = ExtResource("1_yrmca")
+orbital_radius = 2200.0
+orbital_speed = 0.25
 
 [node name="planetBody" type="Area2D" parent="."]
 collision_layer = 2

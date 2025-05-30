@@ -14,16 +14,16 @@ script = ExtResource("1_kln2b")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -49808.0
-offset_top = -52920.0
-offset_right = 50192.0
-offset_bottom = 47080.0
+offset_left = -49082.0
+offset_top = -52747.0
+offset_right = 50918.0
+offset_bottom = 47253.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Spaceship" parent="." instance=ExtResource("2_rgh2o")]
-position = Vector2(-1050, 774)
+position = Vector2(-585, 633)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -69,69 +69,27 @@ value = 100.0
 fill_mode = 3
 
 [node name="smallPlanet" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(-12, 1673)
+position = Vector2(1006, 1662)
+orbital_radius = 1200.0
 
-[node name="smallPlanet2" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(-2336, 2138)
-
-[node name="smallPlanet3" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(4159, 2305)
-
-[node name="smallPlanet4" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(1251, 3687)
-
-[node name="smallPlanet5" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(-4527, -2791)
-
-[node name="smallPlanet6" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(6971, -2359)
+[node name="smallPlanet" parent="smallPlanet" instance=ExtResource("3_pbw6q")]
+position = Vector2(-11909, -1306)
+orbital_radius = 4300.0
+orbital_speed = 0.35
 
 [node name="mediumPlanet" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-44, -1520)
-
-[node name="mediumPlanet2" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-872, -76)
-
-[node name="mediumPlanet3" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(832, -2972)
-
-[node name="mediumPlanet4" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(3847, -1864)
-
-[node name="mediumPlanet5" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-1240, 3856)
-
-[node name="mediumPlanet6" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(5306, 334)
-
-[node name="mediumPlanet7" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-3543, -482)
+position = Vector2(6077, -2788)
+orbital_radius = 2600.0
 
 [node name="largePlanet" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(2069, -1855)
+position = Vector2(-5060, 3453)
+orbital_radius = 1900.0
 
-[node name="largePlanet2" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(1843, 1589)
-
-[node name="largePlanet3" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(3214, 28)
-
-[node name="largePlanet4" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(-1887, -1986)
-
-[node name="largePlanet5" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(2883, -3512)
-
-[node name="largePlanet6" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(-1206, -4059)
-
-[node name="largePlanet7" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(-4565, 1795)
-
-[node name="largePlanet8" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(3679, 4665)
+[node name="largePlanet" parent="largePlanet" instance=ExtResource("6_v1gob")]
+position = Vector2(-3609, -1373)
+orbital_radius = 3500.0
+orbital_speed = 0.31
 
 [node name="Sun" parent="." instance=ExtResource("7_jw32o")]
-position = Vector2(1000, 83)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
