@@ -16,11 +16,11 @@ var _orbit_angle: float   = 0.0
 @export var max_fuel := 100.0
 var current_fuel := max_fuel
 @export var thrust_power := 1000.0
-@export var fuel_burn_rate := 20.0
+@export var fuel_burn_rate := 10.0
 
 # Secondary fuel and turn settings
 @export var max_turn_fuel       := 100.0
-@export var turn_fuel_burn_rate := 10.0
+@export var turn_fuel_burn_rate := 7.0
 @export var turn_speed          := 3.0
 var turn_fuel := max_turn_fuel
 
@@ -33,7 +33,7 @@ var is_zoomed := false
 @onready var cam: Camera2D = $Camera2D
 
 # Linear damping (drag) applied when coasting
-@export var linear_damping := 0.5  # fraction of speed lost per second
+@export var linear_damping := 100
 
 func _ready() -> void:
 	cam.make_current()

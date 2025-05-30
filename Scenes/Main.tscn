@@ -1,16 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://cicfx016cgi4k"]
+[gd_scene load_steps=9 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
+[ext_resource type="Shader" uid="uid://bupcq2fjpetli" path="res://Scenes/Main.gdshader" id="2_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bghnl4p5lfhl" path="res://Scenes/Spaceship.tscn" id="2_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://cbdbjp3is68ks" path="res://Scenes/smallPlanet.tscn" id="3_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://baubbr1tgv60k" path="res://Scenes/mediumPlanet.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b1ab33pf64o5a" path="res://Scenes/largePlanet.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://cevdqifu1aoer" path="res://Scenes/sun.tscn" id="7_jw32o"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50glp"]
+shader = ExtResource("2_jw32o")
+shader_parameter/star_density = 0.018
+shader_parameter/twinkle_speed = 1.066
+shader_parameter/star_size = 0.001
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kln2b")
 
 [node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_50glp")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +31,39 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Spaceship" parent="." instance=ExtResource("2_rgh2o")]
-position = Vector2(-585, 633)
+position = Vector2(742, -10)
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+visible = false
+offset_left = 411.0
+offset_top = -400.0
+offset_right = 1078.0
+offset_bottom = -84.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_right = 670.0
+offset_bottom = 312.0
+
+[node name="Label" type="Label" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Controls -
+Space - Launch and Thrust
+A - Turn Left
+D - Turn Right
+F - Toggle Zoom
+Esc - Toggle Menu"
+
+[node name="Button" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
