@@ -1,20 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbdbjp3is68ks"]
+[gd_scene load_steps=10 format=3 uid="uid://cbdbjp3is68ks"]
 
 [ext_resource type="Script" uid="uid://dq7wa00hnlnkm" path="res://planet_orbit.gd" id="1_71tfn"]
 [ext_resource type="Texture2D" uid="uid://eorn2bwasuyr" path="res://art/smallPlanet.png" id="2_8g7i6"]
 [ext_resource type="Script" uid="uid://sf4aia4nq5ok" path="res://Scripts/planet_body.gd" id="2_71tfn"]
 [ext_resource type="Script" uid="uid://cnqy5i3x1qkmr" path="res://Scripts/gravity_field.gd" id="3_uj3hf"]
+[ext_resource type="Shader" uid="uid://cvpx017jwf2q6" path="res://Scenes/field.gdshader" id="5_pi3aj"]
+[ext_resource type="Script" uid="uid://ds7f1e7tijwp8" path="res://Scenes/field_visual.gd" id="6_pi3aj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hiue"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8g7i6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi3aj"]
+shader = ExtResource("5_pi3aj")
+shader_parameter/glow_color = Vector3(1, 0.2, 0.2)
+shader_parameter/pulse_speed = 1.267
+shader_parameter/pulse_strength = 0.046
+shader_parameter/base_strength = 0.123
+shader_parameter/shader_time = 3.525
+
 [node name="Planet" type="Node2D"]
 script = ExtResource("1_71tfn")
-orbital_radius = 700.0
+orbital_radius = 2000.0
 orbital_speed = 0.2
 
 [node name="planetBody" type="Area2D" parent="."]
+z_index = 40
 collision_layer = 2
 script = ExtResource("2_71tfn")
 
@@ -36,5 +47,13 @@ script = ExtResource("3_uj3hf")
 scale = Vector2(63, 63)
 shape = SubResource("CircleShape2D_8g7i6")
 debug_color = Color(0.755778, 0.429221, 0.41801, 0.42)
+
+[node name="FieldVisual" type="ColorRect" parent="gravityField"]
+material = SubResource("ShaderMaterial_pi3aj")
+offset_left = -650.0
+offset_top = -650.0
+offset_right = 650.0
+offset_bottom = 650.0
+script = ExtResource("6_pi3aj")
 
 [connection signal="body_entered" from="planetBody" to="planetBody" method="_on_body_entered"]
