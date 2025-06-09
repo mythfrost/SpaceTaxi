@@ -1,12 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cevdqifu1aoer"]
+[gd_scene load_steps=9 format=3 uid="uid://cevdqifu1aoer"]
 
 [ext_resource type="Script" uid="uid://sf4aia4nq5ok" path="res://Scripts/planet_body.gd" id="1_hw71r"]
 [ext_resource type="Texture2D" uid="uid://o6jdtacr6hkx" path="res://art/20250430_0355_Pixelated Blue Sun_simple_compose_01jt35b69dest874qhfa27cky3.png" id="2_qh0p3"]
 [ext_resource type="Script" uid="uid://cnqy5i3x1qkmr" path="res://Scripts/gravity_field.gd" id="3_5wx56"]
+[ext_resource type="Shader" uid="uid://cvpx017jwf2q6" path="res://Scenes/field.gdshader" id="4_5wx56"]
+[ext_resource type="Script" uid="uid://ds7f1e7tijwp8" path="res://Scenes/field_visual.gd" id="5_x51nk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x51nk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phmwl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phmwl"]
+shader = ExtResource("4_5wx56")
+shader_parameter/glow_color = Vector3(0.2, 0.6, 1)
+shader_parameter/pulse_speed = 1.267
+shader_parameter/pulse_strength = 0.046
+shader_parameter/base_strength = 0.123
+shader_parameter/shader_time = 3.525
 
 [node name="Sun" type="Node2D"]
 
@@ -32,5 +42,13 @@ script = ExtResource("3_5wx56")
 scale = Vector2(63, 63)
 shape = SubResource("CircleShape2D_phmwl")
 debug_color = Color(0.755778, 0.429221, 0.41801, 0.42)
+
+[node name="FieldVisual" type="ColorRect" parent="gravityField"]
+material = SubResource("ShaderMaterial_phmwl")
+offset_left = -650.0
+offset_top = -650.0
+offset_right = 650.0
+offset_bottom = 650.0
+script = ExtResource("5_x51nk")
 
 [connection signal="body_entered" from="planetBody" to="planetBody" method="_on_body_entered"]

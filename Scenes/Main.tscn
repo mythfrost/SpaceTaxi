@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cicfx016cgi4k"]
+[gd_scene load_steps=10 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
 [ext_resource type="Shader" path="res://Scenes/Main.gdshader" id="2_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bghnl4p5lfhl" path="res://Scenes/Spaceship.tscn" id="2_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://cbdbjp3is68ks" path="res://Scenes/smallPlanet.tscn" id="3_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://cge662gm5ymot" path="res://art/20250609_1533_Pixelated Arrow Up_simple_compose_01jxbd5wsgfhgb6ttfj21ybrgd.png" id="4_50glp"]
 [ext_resource type="PackedScene" uid="uid://baubbr1tgv60k" path="res://Scenes/mediumPlanet.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b1ab33pf64o5a" path="res://Scenes/largePlanet.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://cevdqifu1aoer" path="res://Scenes/sun.tscn" id="7_jw32o"]
@@ -31,7 +32,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Spaceship" parent="." instance=ExtResource("2_rgh2o")]
-position = Vector2(742, -10)
+position = Vector2(3116, 1191)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 
@@ -108,28 +109,49 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 value = 100.0
 fill_mode = 3
 
-[node name="smallPlanet" parent="." instance=ExtResource("3_pbw6q")]
-position = Vector2(1006, 1662)
-orbital_radius = 1200.0
+[node name="Arrow" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(961, 103)
+scale = Vector2(0.0937499, 0.114746)
+texture = ExtResource("4_50glp")
 
-[node name="smallPlanet" parent="smallPlanet" instance=ExtResource("3_pbw6q")]
-position = Vector2(-11909, -1306)
-orbital_radius = 4300.0
-orbital_speed = 0.35
+[node name="smallPlanet" parent="." groups=["Planets"] instance=ExtResource("3_pbw6q")]
+position = Vector2(2666, 43)
+orbital_speed = 0.1
 
-[node name="mediumPlanet" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(6077, -2788)
-orbital_radius = 2600.0
+[node name="mediumPlanet" parent="." groups=["Planets"] instance=ExtResource("5_pbw6q")]
+position = Vector2(7839, -4395)
+orbital_radius = 5300.0
+orbital_speed = 0.13
 
-[node name="largePlanet" parent="." instance=ExtResource("6_v1gob")]
-position = Vector2(-5060, 3453)
-orbital_radius = 1900.0
-
-[node name="largePlanet" parent="largePlanet" instance=ExtResource("6_v1gob")]
-position = Vector2(-3609, -1373)
-orbital_radius = 3500.0
-orbital_speed = 0.31
+[node name="largePlanet" parent="." groups=["Planets"] instance=ExtResource("6_v1gob")]
+position = Vector2(-5091, 3670)
+orbital_radius = 7000.0
+orbital_speed = 0.15
 
 [node name="Sun" parent="." instance=ExtResource("7_jw32o")]
+scale = Vector2(1.5, 1.5)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="smallPlanet2" parent="." groups=["Planets"] instance=ExtResource("3_pbw6q")]
+position = Vector2(-17620, 499)
+orbital_radius = 9000.0
+
+[node name="largePlanet2" parent="." groups=["Planets"] instance=ExtResource("6_v1gob")]
+position = Vector2(18, -10501)
+orbital_radius = 4000.0
+orbital_speed = 0.13
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="QuestLabel" type="Label" parent="CanvasLayer2"]
+offset_left = 751.0
+offset_top = 134.0
+offset_right = 1146.0
+offset_bottom = 157.0
+
+[node name="WorldCam" type="Camera2D" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

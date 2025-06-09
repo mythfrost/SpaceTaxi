@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var orbit_center: Vector2 = Vector2.ZERO   # point to orbit around
-@export var orbital_radius: float = 400.0           # distance from center
+@export var orbital_radius: float = 100.0           # distance from center
 @export var orbital_speed: float = 0.5              # radians per second
 
 var _orbit_angle: float = 0.0

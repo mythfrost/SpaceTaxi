@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bghnl4p5lfhl"]
+[gd_scene load_steps=5 format=3 uid="uid://bghnl4p5lfhl"]
 
 [ext_resource type="Texture2D" uid="uid://de1tngnfkai4o" path="res://art/ChatGPT Image Apr 8, 2025, 04_34_18 AM.png" id="1_jnnhe"]
 [ext_resource type="Script" uid="uid://bbu5nl8nxfng0" path="res://Scripts/spaceship.gd" id="1_nohp5"]
+[ext_resource type="Script" uid="uid://bwa3ujidg1t8q" path="res://Scenes/thrust.gd" id="3_hvh5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jnnhe"]
 size = Vector2(14, 47)
@@ -19,5 +20,14 @@ position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_jnnhe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.35, 0.35)
 position_smoothing_speed = 3.0
+
+[node name="thrust" type="Control" parent="."]
+z_index = 55
+layout_mode = 3
+anchors_preset = 0
+offset_top = 32.0
+offset_right = 40.0
+offset_bottom = 72.0
+script = ExtResource("3_hvh5m")
