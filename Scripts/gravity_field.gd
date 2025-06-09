@@ -1,5 +1,5 @@
 extends Area2D
-
+#Defines how far and how fast a planet’s gravity field orbits, and holds a reference to the planet node
 @export var orbit_distance := 600.0
 @export var orbit_speed    := 1.8
 var orbit_body: Node2D = null

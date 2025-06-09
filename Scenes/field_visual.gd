@@ -1,5 +1,5 @@
 extends ColorRect
-
+#Caches the shader material on ready and increments its time uniform each frame so the pulsing animation runs.
 var mat: ShaderMaterial
 
 func _ready():
