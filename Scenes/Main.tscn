@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
-[ext_resource type="Shader" path="res://Scenes/Main.gdshader" id="2_jw32o"]
+[ext_resource type="Shader" uid="uid://bupcq2fjpetli" path="res://Scenes/Main.gdshader" id="2_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bghnl4p5lfhl" path="res://Scenes/Spaceship.tscn" id="2_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://cbdbjp3is68ks" path="res://Scenes/smallPlanet.tscn" id="3_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://cge662gm5ymot" path="res://art/20250609_1533_Pixelated Arrow Up_simple_compose_01jxbd5wsgfhgb6ttfj21ybrgd.png" id="4_50glp"]
