@@ -153,5 +153,6 @@ offset_right = 1146.0
 offset_bottom = 157.0
 
 [node name="WorldCam" type="Camera2D" parent="."]
+zoom = Vector2(0.35, 0.35)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
