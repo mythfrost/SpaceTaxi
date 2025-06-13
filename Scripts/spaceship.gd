@@ -10,10 +10,10 @@ class_name Spaceship
 ]
 
 # —— Core flight settings ——
-@export var thrust_force:        float = 800.0
-@export var thrust_burn_rate:    float = 10.0
+@export var thrust_force:        float = 1000.0
+@export var thrust_burn_rate:    float = 7.0
 @export var rotation_speed:      float = 2.0
-@export var turn_fuel_burn_rate: float = 7.0
+@export var turn_fuel_burn_rate: float = 5.0
 @export var linear_damping:      float = 100.0
 
 # —— Fuel & state ——

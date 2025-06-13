@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://baubbr1tgv60k"]
 
-[ext_resource type="Script" uid="uid://dq7wa00hnlnkm" path="res://planet_orbit.gd" id="1_g5jje"]
+[ext_resource type="Script" uid="uid://dq7wa00hnlnkm" path="res://Scripts/planet_orbit.gd" id="1_g5jje"]
 [ext_resource type="Script" uid="uid://sf4aia4nq5ok" path="res://Scripts/planet_body.gd" id="1_qc4db"]
 [ext_resource type="Texture2D" uid="uid://dnvucwq2praof" path="res://art/mediumPlanet.png" id="2_ysysd"]
 [ext_resource type="Script" uid="uid://cnqy5i3x1qkmr" path="res://Scripts/gravity_field.gd" id="3_35xla"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cicfx016cgi4k"]
+[gd_scene load_steps=12 format=3 uid="uid://cicfx016cgi4k"]
 
 [ext_resource type="Script" uid="uid://02nehf8mulqh" path="res://Scripts/main.gd" id="1_kln2b"]
 [ext_resource type="Shader" uid="uid://bupcq2fjpetli" path="res://Scenes/Main.gdshader" id="2_jw32o"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://baubbr1tgv60k" path="res://Scenes/mediumPlanet.tscn" id="5_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://b1ab33pf64o5a" path="res://Scenes/largePlanet.tscn" id="6_v1gob"]
 [ext_resource type="PackedScene" uid="uid://cevdqifu1aoer" path="res://Scenes/sun.tscn" id="7_jw32o"]
+[ext_resource type="Script" uid="uid://cioqqkjo1th6f" path="res://Scripts/DialogueCreator.gd" id="9_bmxlf"]
+[ext_resource type="Script" uid="uid://dkhag43ypqgey" path="res://Scripts/vignette.gd" id="10_bmxlf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50glp"]
 shader = ExtResource("2_jw32o")
@@ -154,5 +156,18 @@ offset_bottom = 157.0
 
 [node name="WorldCam" type="Camera2D" parent="."]
 zoom = Vector2(0.35, 0.35)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("9_bmxlf")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_bmxlf")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
